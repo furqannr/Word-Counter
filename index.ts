@@ -13,9 +13,26 @@ async function Input() {
         ])
         .then(async (answers) => {
             let statement = answers.input;
-            //console.log(chalk.bgRed(statement.length));// Alphabet Counter
-            let newArr = statement.split(" ", statement.length)
-            console.log(newArr.length);// Word Counter
+            // Alphabet Counter
+            console.log(chalk.blueBright("Number of Alphabets: ") + chalk.bgBlueBright(statement.length));
+            // Word Counter
+            let words = statement.split(" ", statement.length);
+            console.log(chalk.blueBright("Number words: ") + chalk.bgBlueBright(words.length));
+            // Sentences Counter: If sentence is not ended at '.' , this means that it is incomplete 
+            let sentence = statement.split(".", statement.length);
+            console.log(chalk.blueBright("Number sentences: ") + chalk.bgBlueBright(sentence.length - 1));
         });
 }
-Input();
+async function continueChoice() {
+    do {
+        await Input();
+        var choice = await inquirer.prompt(
+            {
+                type: "input",
+                name: "qa",
+                message: chalk.bgGrey("Do you want to check again? Press Y or y to continue")
+            })
+    }
+    while (choice.qa == 'yes' || choice.qa == 'Yes' || choice.qa == 'YES' || choice.qa == 'y' || choice.qa == 'Y');
+}
+continueChoice();
