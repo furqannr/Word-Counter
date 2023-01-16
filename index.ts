@@ -12,8 +12,10 @@ async function Input() {
             },
         ])
         .then(async (answers) => {
-            console.log(chalk.bgRed(answers.input));
-
+            let statement = answers.input;
+            //console.log(chalk.bgRed(statement.length));// Alphabet Counter
+            let newArr = statement.split(" ", statement.length)
+            console.log(newArr.length);// Word Counter
         });
 }
 Input();
