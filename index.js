@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import chalk from "chalk";
 import inquirer from "inquirer";
 console.log(chalk.bgBlueBright("Words & Alphabet Counter"));
@@ -27,7 +28,7 @@ async function continueChoice() {
         var choice = await inquirer.prompt({
             type: "input",
             name: "qa",
-            message: chalk.bgGrey("Do you want to play again? Press Y or y to continue")
+            message: chalk.bgGrey("Do you want to check again? Press Y or y to continue")
         });
     } while (choice.qa == 'yes' || choice.qa == 'Yes' || choice.qa == 'YES' || choice.qa == 'y' || choice.qa == 'Y');
 }
